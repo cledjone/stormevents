@@ -10,6 +10,8 @@ import javax.persistence.Table;
 @Table(name="TAB_USU")
 public class Usuario {
 	
+	//teste de pull
+	
 	@Id
 	@GeneratedValue
 	@Column(name="ID_USU")

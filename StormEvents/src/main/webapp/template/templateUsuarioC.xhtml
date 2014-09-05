@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:osms="http://java.sun.com/jsf/composite/osms">
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="Content-Type"
+			content="text/html; charset=ISO-8859-1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="/StormEvents/lib/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet"/>
+    	<script src="/StormEvents/lib/jquery.min.js"></script>
+    	<script src="/StormEvents/lib/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    	
+		<link href="/StormEvents.css/resources/css/layout.css" rel="stylesheet" />
+		<title>Storm Events</title>
+	</h:head>
+
+	<h:body>
+
+		<div class="container" style="padding-top: 70px">
+				<ui:insert name="content">
+
+				</ui:insert>
+		</div>
+
+		<center>
+			<div class="mastfoot" style="margin-top: 10px;">
+				<div class="inner">
+					<p style="color: gray;">
+						Storm Events - O Melhor evento você encontra aqui!
+					</p>
+				</div>
+			</div>
+		</center>
+
+	</h:body>
+
+</f:view>
+</html>

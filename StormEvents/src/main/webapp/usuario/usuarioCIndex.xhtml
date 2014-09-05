@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:formTemplate="http://java.sun.com/jsf/composite/formTemplate"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/templateUsuarioC.xhtml">
+	<ui:define name="content">
+
+		<h:form styleClass="form-horizontal" id="form">
+
+			<p:button value="Novo Usuário" outcome="usuarioCAD" />
+
+			<br />
+			<br />
+
+			<p:panel header="Lista de Usuário">
+				<p:messages></p:messages>
+				<p:scrollPanel style="height:400px">
+					<p:dataTable var="usuario"
+						value="#{usuarioBean.consultarTodosUsuarios}"
+						selectionMode="single" selection="#{usuarioBean.usuario}"
+						rowKey="#{usuario.id}">
+
+						<p:column headerText="Nome">
+							<h:outputText value="#{usuario.nome}">
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Editar">
+							<center>
+								<p:commandLink oncomplete="viewEdit.show()">
+									<p:graphicImage value="../resources/images/edit.png" />
+									<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+										value="#{usuario}" />
+								</p:commandLink>
+							</center>
+						</p:column>
+
+						<p:column headerText="Excluir">
+							<center>
+								<p:commandLink action="#{produtoBean.removerUsuario(usuario)}">
+									<p:graphicImage value="../resources/images/delete.png" />
+									<p:confirm header="Excluir Produto"
+										message="Deseja realmente excluir este Usuário?"
+										icon="ui-icon-alert" />
+								</p:commandLink>
+							</center>
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="explode">
+								<p:commandButton value="Yes" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="No" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+						</p:column>
+					</p:dataTable>
+				</p:scrollPanel>
+			</p:panel>
+
+		</h:form>
+
+		<p:dialog widgetVar="viewEdit" id="modalEdit" header="Mensagem privada"  
+    modal="true" appendToBody="true" resizable="false" draggable="false"> 
+			<p:messages />
+			<h:form>
+			<br />
+			<p:fieldset legend="Dados Gerais do Usuário">
+				<b>Nome: </b>
+				<p:inplace id="InplaceNome" editor="true">
+					<h:inputText value="#{usuarioBean.usuario.nome}"
+						onkeyup="this.value = this.value.toUpperCase();" required="true"
+						requiredMessage="O Campo 'Nome' é obrigatório!" />
+				</p:inplace>
+			</p:fieldset>
+			<center>
+				<p:commandButton actionListener="#{produtoBean.alterarUsuario}"
+					value="Salvar" ajax="false" icon="ui-icon-disk"></p:commandButton>
+			</center>
+			</h:form>
+		</p:dialog>
+
+		<p:messages />
+
+	</ui:define>
+</ui:composition>
+</html>

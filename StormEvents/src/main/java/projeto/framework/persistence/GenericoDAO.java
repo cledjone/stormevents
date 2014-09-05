@@ -10,11 +10,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-/**
- * PSC
- * 
- * @param <Entidade, PK>
- */
 public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 
 	protected EntityManager entityManager;
@@ -22,7 +17,7 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 
 	@SuppressWarnings("unchecked")
 	public GenericoDAO(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("sgrb");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("stormevents");
 		
 		entityManager = emf.createEntityManager();
 				
@@ -30,13 +25,6 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 	    classePersistente = (Class<Entidade>) parameterizedType.getActualTypeArguments()[0];  
 	}
 	
-	/**
-	 * Executa o merge do objeto que se encontra em memória.
-	 * 
-	 * @param objeto
-	 *            a ser realizado o merge
-	 * @return objeto que foi executado o merge
-	 */
 	public final void alterar(Entidade objeto) {
 		EntityTransaction tx = getEntityManager().getTransaction();
 		try {
@@ -54,11 +42,6 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 		}
 	}
 
-	/**
-	 * Salva o objeto atual na base de dados.
-	 * 
-	 * @param objeto a ser salvo
-	 */
 	public final void inserir(Entidade objeto) {
 		EntityTransaction tx = getEntityManager().getTransaction();		
 		try {
@@ -74,12 +57,6 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 		}
 	}
 
-	/**
-	 * Salva o objeto atual na base de dados.
-	 * 
-	 * @param objeto
-	 *            a ser salvo
-	 */
 	public final void inserirColecao(Collection<Entidade> colecao) {
 		EntityTransaction tx = getEntityManager().getTransaction();
 		try {
@@ -99,13 +76,7 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 			}
 		}
 	}
-
-	/**
-	 * Remove o objeto da base de dados.
-	 * 
-	 * @param objeto
-	 *            a ser removido
-	 */
+	
 	public final void remover(Entidade objeto) {
 		EntityTransaction tx = getEntityManager().getTransaction();
 		try {
@@ -125,15 +96,6 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 		}
 	}
 
-	
-	
-	/**
-	 * Busca o objeto uma vez passado sua chave como parâmetro.
-	 * 
-	 * @param chave
-	 *            identificador
-	 * @return Objeto do tipo T
-	 */
 	public final Entidade consultarPorId(Integer chave) {
 		Entidade instance = null;
 		try {
@@ -155,22 +117,10 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 		return null;
 	}
 
-	/**
-	 * Atualiza o objeto que se encontra em memória.
-	 * 
-	 * @param object
-	 *            objeto a ser atualizado
-	 */
 	public final void refresh(Entidade object) {
 		getEntityManager().refresh(object);
 	}
 	
-	/**
-	 * Utilizado para se injetar o Entity manager no DAO.
-	 * 
-	 * @param entityManager
-	 *            entity manager
-	 */
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}

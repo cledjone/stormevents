@@ -12,19 +12,8 @@
 <ui:composition template="/template/templateUsuarioC.xhtml">
 	<ui:define name="content">
 
-		<h:form styleClass="form-horizontal" id="form">
-			<formTemplate:usuario id="usuario" title="Cadastrar Usuário"
-				form="#{usuarioBean}">
-
-				<f:facet name="buttons">
-					<h:commandButton value="Cadastrar"
-						action="#{usuarioBean.inserirUsuario}" style="width:200px;"
-						class="btn btn-success" />
-				</f:facet>
-			</formTemplate:usuario>
-
-			<p:messages />
-		</h:form>
+		
+		
 
 	</ui:define>
 </ui:composition>

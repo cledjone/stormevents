@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/composite/javax.faces"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<composite:interface>
+	<composite:attribute name="title"></composite:attribute>
+	<composite:attribute name="form"></composite:attribute>
+	<composite:facet name="buttons"></composite:facet>
+	<composite:attribute name="disabled" default="false"></composite:attribute>
+</composite:interface>
+
+<composite:implementation>
+
+	<p:panel header="#{cc.attrs.title}">
+	
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Nome</label>
+			<div class="col-sm-10">
+				<h:inputText value="#{cc.attrs.form.usuario.nome}"
+					disabled="#{cc.attrs.disabled}" class="form-control"
+					pt:placeholder="Nome" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Login</label>
+			<div class="col-sm-10">
+				<h:inputText value="#{cc.attrs.form.usuario.login}"
+					disabled="#{cc.attrs.disabled}" class="form-control"
+					pt:placeholder="Login" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Senha</label>
+			<div class="col-sm-10">
+				<h:inputText value="#{cc.attrs.form.usuario.senha}"
+					disabled="#{cc.attrs.disabled}" class="form-control"
+					pt:placeholder="Senha" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="btn-toolbar">
+					<composite:renderFacet name="buttons"></composite:renderFacet>
+					<h:button value="Voltar" class="btn btn-warning" />
+				</div>
+			</div>
+		</div>
+	</p:panel>
+</composite:implementation>
+
+</html>

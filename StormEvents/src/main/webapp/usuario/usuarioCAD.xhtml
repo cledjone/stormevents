@@ -6,24 +6,222 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:formTemplate="http://java.sun.com/jsf/composite/formTemplate"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
 <ui:composition template="/template/templateUsuarioC.xhtml">
 	<ui:define name="content">
 
 		<h:form styleClass="form-horizontal" id="form">
-			<formTemplate:usuario id="usuario" title="Cadastrar Usuário"
-				form="#{usuarioBean}">
 
-				<f:facet name="buttons">
-					<h:commandButton value="Cadastrar"
-						action="#{usuarioBean.inserirUsuario}" style="width:200px;"
-						class="btn btn-success" />
-				</f:facet>
-			</formTemplate:usuario>
+			<p:wizard flowListener="#{usuarioBean.onFlowProcess}">
 
-			<p:messages />
+				<p:tab id="dadosGerais" title="Dados Gerais">
+
+					<p:panel header="Dados Gerais - Usuário">
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Nome</label>
+							<div class="col-sm-6">
+								<h:inputText  id="nome" value="#{usuarioBean.usuario.nome}"
+									class="form-control" pt:placeholder="Nome" required="true"
+									requiredMessage="O Campo 'Nome' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="nome"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Login</label>
+							<div class="col-sm-6">
+								<h:inputText id="login" value="#{usuarioBean.usuario.login}"
+									class="form-control" pt:placeholder="Login" required="true"
+									requiredMessage="O Campo 'Login' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="login"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Senha</label>
+							<div class="col-sm-6">
+								<h:inputText id="senha" value="#{usuarioBean.usuario.senha}"
+									class="form-control" pt:placeholder="Senha" required="true"
+									requiredMessage="O Campo 'Senha' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="senha"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-6">
+								<h:inputText id="email" value="#{usuarioBean.usuario.email}"
+									class="form-control" pt:placeholder="Email" required="true"
+									requiredMessage="O Campo 'Email' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="email"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Telefone</label>
+							<div class="col-sm-6">
+								<h:inputText id="telefone" value="#{usuarioBean.usuario.telefone}"
+									class="form-control" pt:placeholder="Telefone" required="true"
+									requiredMessage="O Campo 'Telefone' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="telefone"></p:message>
+							</div>
+						</div>
+
+					</p:panel>
+
+				</p:tab>
+				<p:tab id="endereco" title="Endereço">
+
+					<p:panel header="Endereço - Usuário">
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Rua</label>
+							<div class="col-sm-6">
+								<h:inputText id="rua" value="#{usuarioBean.endereco.rua}"
+									class="form-control" pt:placeholder="Rua" required="true"
+									requiredMessage="O Campo 'Rua' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="rua"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Complemento</label>
+							<div class="col-sm-6">
+								<h:inputText id="complemento" value="#{usuarioBean.endereco.complemento}"
+									class="form-control" pt:placeholder="Complemento"
+									required="true"
+									requiredMessage="O Campo 'Complemento' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="complemento"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Numero</label>
+							<div class="col-sm-6">
+								<h:inputText id="numero" value="#{usuarioBean.endereco.numero}"
+									class="form-control" pt:placeholder="Numero" required="true"
+									requiredMessage="O Campo 'Numero' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="numero"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Bairro</label>
+							<div class="col-sm-6">
+								<h:inputText id="bairro" value="#{usuarioBean.endereco.bairro}"
+									class="form-control" pt:placeholder="Bairro" required="true"
+									requiredMessage="O Campo 'Bairro' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="bairro"></p:message>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Cidade</label>
+							<div class="col-sm-6">
+								<h:inputText id="cidade" value="#{usuarioBean.endereco.cidade}"
+									class="form-control" pt:placeholder="Cidade" required="true"
+									requiredMessage="O Campo 'Cidade' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="cidade"></p:message>
+							</div>
+						</div>
+					</p:panel>
+
+				</p:tab>
+				<p:tab id="perfil" title="Perfil">
+
+					<p:panel header="Escolha um Perfil para seu Usuário:">
+
+						<form>
+							<p:commandLink
+								actionListener="#{usuarioBean.alterarTipoPerfil('comum')}">
+								<div class="btn-perfil comum-#{usuarioBean.perfil}">
+									<i class="glyphicon glyphicon-user img-perfil"></i> <br />
+									Usuário Comum
+								</div>
+							</p:commandLink>
+
+							<p:commandLink
+								actionListener="#{usuarioBean.alterarTipoPerfil('organizador')}">
+								<div class="btn-perfil organizador-#{usuarioBean.perfil}">
+									<i class="glyphicon glyphicon-globe  img-perfil"></i> <br />
+									Organizador
+								</div>
+							</p:commandLink>
+
+							<p:commandLink
+								actionListener="#{usuarioBean.alterarTipoPerfil('fornecedor')}">
+								<div class="btn-perfil fornecedor-#{usuarioBean.perfil}">
+									<i class="glyphicon glyphicon-usd img-perfil"></i> <br />
+									Fornecedor
+								</div>
+							</p:commandLink>
+
+							<p:commandLink
+								actionListener="#{usuarioBean.alterarTipoPerfil('patrocinador')}">
+								<div class="btn-perfil patrocinador-#{usuarioBean.perfil}">
+									<i class="glyphicon glyphicon-flag img-perfil"></i> <br />
+									Patrocinador
+								</div>
+							</p:commandLink>
+
+						</form>
+					</p:panel>
+
+				</p:tab>
+				<p:tab id="confirmar" title="Finalizar Cadastro">
+
+					<p:panel header="Finalizar Cadastro de Usuário">
+
+						<div class="form-group">
+							<div class="col-sm-offset-7 col-sm-5">
+								<div class="btn-toolbar">
+									<h:commandButton value="Cadastrar"
+										action="#{usuarioBean.inserirUsuario}" style="width:200px;"
+										class="btn btn-success" />
+									<h:button value="Voltar" class="btn btn-warning"
+										outcome="usuarioLIST" />
+								</div>
+							</div>
+						</div>
+					</p:panel>
+
+				</p:tab>
+			</p:wizard>
+
 		</h:form>
 
 	</ui:define>

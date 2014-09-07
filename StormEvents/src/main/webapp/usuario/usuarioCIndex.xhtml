@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -14,7 +14,8 @@
 
 		<h:form styleClass="form-horizontal" id="form">
 
-			<p:button value="Novo Usuário" outcome="usuarioCAD" />
+			<p:button value="Novo Usuário" outcome="usuarioCAD"
+				onclick="#{usuarioBean.novoUsuario()}" />
 
 			<br />
 			<br />
@@ -34,7 +35,8 @@
 
 						<p:column headerText="Editar">
 							<center>
-								<p:commandLink oncomplete="viewEdit.show()">
+								<p:commandLink oncomplete="PF('viewEdit').show()"
+									update=":viewEditId:viewEdit">
 									<p:graphicImage value="../resources/images/edit.png" />
 									<f:setPropertyActionListener target="#{usuarioBean.usuario}"
 										value="#{usuario}" />
@@ -44,9 +46,9 @@
 
 						<p:column headerText="Excluir">
 							<center>
-								<p:commandLink action="#{produtoBean.removerUsuario(usuario)}">
+								<p:commandLink action="#{usuarioBean.removerUsuario(usuario)}">
 									<p:graphicImage value="../resources/images/delete.png" />
-									<p:confirm header="Excluir Produto"
+									<p:confirm header="Excluir Usuário"
 										message="Deseja realmente excluir este Usuário?"
 										icon="ui-icon-alert" />
 								</p:commandLink>
@@ -56,7 +58,8 @@
 								<p:commandButton value="Yes" type="button"
 									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 								<p:commandButton value="No" type="button"
-									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+									ajax="@me" />
 							</p:confirmDialog>
 						</p:column>
 					</p:dataTable>
@@ -65,25 +68,146 @@
 
 		</h:form>
 
-		<p:dialog widgetVar="viewEdit" id="modalEdit" header="Mensagem privada"  
-    modal="true" appendToBody="true" resizable="false" draggable="false"> 
-			<p:messages />
-			<h:form>
-			<br />
-			<p:fieldset legend="Dados Gerais do Usuário">
-				<b>Nome: </b>
-				<p:inplace id="InplaceNome" editor="true">
-					<h:inputText value="#{usuarioBean.usuario.nome}"
-						onkeyup="this.value = this.value.toUpperCase();" required="true"
-						requiredMessage="O Campo 'Nome' é obrigatório!" />
-				</p:inplace>
-			</p:fieldset>
-			<center>
-				<p:commandButton actionListener="#{produtoBean.alterarUsuario}"
-					value="Salvar" ajax="false" icon="ui-icon-disk"></p:commandButton>
-			</center>
-			</h:form>
-		</p:dialog>
+		<h:form id="viewEditId">
+			<p:dialog widgetVar="viewEdit" id="viewEdit"
+				header="Detalhe do Usuário" modal="true" resizable="false"
+				showEffect="explode" height="500px" width="70%">
+		
+				<h:form styleClass="form-horizontal">
+					<p:fieldset legend="Dados Gerais do Usuário">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Nome</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceNome" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.nome}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Nome' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Login</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceLogin" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.login}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Login' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Senha</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceSenha" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.senha}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Senha' é obrigatório!"/>
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceEmail" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.email}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Email' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Telefone</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceTelefone" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.telefone}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Telefone' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+
+					</p:fieldset>
+					<br/>
+					<p:fieldset legend="Endereço do Usuário">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Rua</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceRua" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.endereco.rua}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Rua' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Complemento</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceComplemento" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.endereco.complemento}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Complemento' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Numero</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceSenhaNumero" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.endereco.numero}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Numero' é obrigatório!"/>
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Bairro</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceBairro" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.endereco.bairro}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Bairro' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Cidade</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceCidade" editor="true">
+									<h:inputText value="#{usuarioBean.usuario.endereco.cidade}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Cidade' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+
+					</p:fieldset>
+					<br/>
+					<center>
+						<h:commandButton value="Salvar"
+										action="#{usuarioBean.alterarUsuario}" style="width:200px;"
+										class="btn btn-success" />
+					</center>
+				</h:form>
+			</p:dialog>
+		</h:form>
 
 		<p:messages />
 

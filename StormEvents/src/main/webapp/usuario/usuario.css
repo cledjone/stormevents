@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+.btn-perfil {
+    width: 23%;
+    height: 167px;
+    background-color: rgb(20, 20, 20);
+    float: left;
+    margin-left: 10px;
+    margin-top: 41px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.btn-perfil:hover {
+   background:  #0b3e6f url("/StormEvents/javax.faces.resource/images/ui-bg_diagonals-thick_15_0b3e6f_40x40.png.xhtml?ln=primefaces-dot-luv") 50% 50% repeat;
+}
+
+.img-perfil{
+    width: 150px;
+    height: 110px;
+    margin-bottom: 10px;
+    font-size: 100px;
+    margin-top: 10px;
+     text-shadow: 1px 1px 10px #FFF;
+}
+
+.btn-perfil p{
+	 text-shadow: 1px 1px 10px #FFF;
+}

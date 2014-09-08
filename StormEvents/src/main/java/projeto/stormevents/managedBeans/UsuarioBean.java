@@ -1,4 +1,4 @@
-package projeto.stormevents.presentation;
+package projeto.stormevents.managedBeans;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -10,10 +10,10 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FlowEvent;
 
-import projeto.stormevents.business.Endereco;
-import projeto.stormevents.business.Usuario;
-import projeto.stormevents.facade.Fachada;
-import projeto.stormevents.facade.IFachada;
+import projeto.stormevents.basicas.Endereco;
+import projeto.stormevents.basicas.Usuario;
+import projeto.stormevents.fachada.Fachada;
+import projeto.stormevents.fachada.IFachada;
 
 @ManagedBean
 @SessionScoped

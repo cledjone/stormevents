@@ -1,7 +1,7 @@
-package projeto.stormevents.persistence;
+package projeto.stormevents.dados;
 
 import projeto.framework.persistence.GenericoDAO;
-import projeto.stormevents.business.Usuario;
+import projeto.stormevents.basicas.Usuario;
 
 public class UsuarioDAO extends GenericoDAO<Usuario> implements UsuarioIDAO  {
 

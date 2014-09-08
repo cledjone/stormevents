@@ -1,9 +1,9 @@
-package projeto.stormevents.facade;
+package projeto.stormevents.fachada;
 
 import java.util.List;
 
-import projeto.stormevents.business.Usuario;
-import projeto.stormevents.business.UsuarioControlador;
+import projeto.stormevents.basicas.Usuario;
+import projeto.stormevents.basicas.UsuarioControlador;
 
 public class Fachada implements IFachada {
 

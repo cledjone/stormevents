@@ -1,4 +1,4 @@
-package projeto.stormevents.business;
+package projeto.stormevents.basicas;
 
 
 import javax.persistence.Column;

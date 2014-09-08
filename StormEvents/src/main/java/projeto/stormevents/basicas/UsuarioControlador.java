@@ -1,8 +1,9 @@
-package projeto.stormevents.business;
+package projeto.stormevents.basicas;
 
 import java.util.List;
-import projeto.stormevents.persistence.UsuarioDAO;
-import projeto.stormevents.persistence.UsuarioIDAO;
+
+import projeto.stormevents.dados.UsuarioDAO;
+import projeto.stormevents.dados.UsuarioIDAO;
 
 public class UsuarioControlador {
 

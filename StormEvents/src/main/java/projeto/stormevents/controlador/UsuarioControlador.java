@@ -1,7 +1,8 @@
-package projeto.stormevents.basicas;
+package projeto.stormevents.controlador;
 
 import java.util.List;
 
+import projeto.stormevents.basicas.Usuario;
 import projeto.stormevents.dados.UsuarioDAO;
 import projeto.stormevents.dados.UsuarioIDAO;
 

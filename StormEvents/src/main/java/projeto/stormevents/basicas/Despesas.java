@@ -1,28 +1,21 @@
 package projeto.stormevents.basicas;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TAB_USU")
+@Table(name = "TAB_DESPESAS")
 public class Despesas {
 
 	@Id
 	@GeneratedValue
 	@Column(name = "ID_DESPESAS")
 	private int id;
-	
-	@ManyToOne
-	@JoinColumn(name = "CATEGORIA_DESPESAS")
-	private CategoriaDespesas categoriadespesas;
 
 	@Column(name = "VALOR_DESPESAS")
 	private double valor;
@@ -30,23 +23,19 @@ public class Despesas {
 	@ManyToOne
 	@JoinColumn(name = "USUARIO_DESPESAS")
 	private Usuario usuario;
+
 	
 	
-	//GET AND SETTERS
+	
+	
+	
+	// GET AND SETTERS
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public CategoriaDespesas getCategoriadespesas() {
-		return categoriadespesas;
-	}
-
-	public void setCategoriadespesas(CategoriaDespesas categoriadespesas) {
-		this.categoriadespesas = categoriadespesas;
 	}
 
 	public double getValor() {
@@ -65,6 +54,5 @@ public class Despesas {
 		this.usuario = usuario;
 	}
 
-	
 
 }

@@ -132,6 +132,4 @@ public class Usuario {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
-	
 }

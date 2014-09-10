@@ -3,7 +3,7 @@ package projeto.stormevents.fachada;
 import java.util.List;
 
 import projeto.stormevents.basicas.Usuario;
-import projeto.stormevents.basicas.UsuarioControlador;
+import projeto.stormevents.controlador.UsuarioControlador;
 
 public class Fachada implements IFachada {
 

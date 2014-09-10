@@ -1,4 +1,4 @@
-package projeto.stormevents.business;
+package projeto.stormevents.basicas;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -132,6 +132,4 @@ public class Usuario {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
-	
 }

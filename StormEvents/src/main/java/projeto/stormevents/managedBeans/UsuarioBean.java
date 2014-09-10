@@ -1,4 +1,4 @@
-package projeto.stormevents.presentation;
+package projeto.stormevents.managedBeans;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -22,13 +22,6 @@ public class UsuarioBean {
 	private IFachada fachada = Fachada.getInstancia();
 	private Endereco endereco = new Endereco();
 	private Usuario usuario = new Usuario();
-	private String perfil = "comum";
-	
-	public void novoUsuario(){
-		this.usuario = new Usuario();
-		this.endereco = new Endereco();
-		this.perfil = "comum";
-	}
 
 	public String inserirUsuario() {
 		try {
@@ -40,7 +33,7 @@ public class UsuarioBean {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao cadastrar Usuário!"));
 		}
-		return "usuarioCIndex.xthml";
+		return "usuarioCAD.xthml";
 	}
 
 	public String alterarUsuario() {
@@ -52,21 +45,23 @@ public class UsuarioBean {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao alterar usuario!"));
 		}
-		return "usuarioCIndex.xhtml";
+		return "usuarioLIST.xhtml";
 	}
 
 	public String removerUsuario(Usuario usuario) {
 		try {
-			fachada.removerUsuario(usuario);
+			fachada.removerUsuario(usuario);;
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect("usuarioLIST.xhtml");
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					"Excluir", "Usuário excluído com Sucesso!");
-			FacesContext.getCurrentInstance().getExternalContext().redirect("usuarioCIndex.xhtml");
+					"Excluir", "Usuário excluído com Sucesso!.");
+
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (Exception ex) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao excluir Usuário!"));
 		}
-		return "usuarioCIndex.xhtml";
+		return "";
 	}
 
 	public List<Usuario> getConsultarTodosUsuarios() {
@@ -87,20 +82,6 @@ public class UsuarioBean {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-	
-	public String getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(String perfil) {
-		this.perfil = perfil;
-	}
-
-	public void alterarTipoPerfil(String perfil){
-		if(perfil!=""){
-			this.perfil = perfil;
-		}
 	}
 
 	// ------------------------------------------------------------

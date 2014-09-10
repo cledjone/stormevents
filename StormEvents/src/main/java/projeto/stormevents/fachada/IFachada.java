@@ -1,8 +1,8 @@
-package projeto.stormevents.facade;
+package projeto.stormevents.fachada;
 
 import java.util.List;
 
-import projeto.stormevents.business.Usuario;
+import projeto.stormevents.basicas.Usuario;
 
 public interface IFachada {
 	

@@ -3,6 +3,7 @@ package projeto.stormevents.fachada;
 import java.util.List;
 
 import projeto.stormevents.basicas.Usuario;
+import projeto.stormevents.seguranca.LoginInvalidoException;
 
 public interface IFachada {
 	
@@ -15,5 +16,7 @@ public interface IFachada {
 	public void removerUsuario(Usuario usuario);
 
 	public void alterarUsuario(Usuario usuario);
+
+	void logarUsuario(Usuario usuario) throws LoginInvalidoException;
 
 }

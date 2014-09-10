@@ -22,6 +22,13 @@ public class UsuarioBean {
 	private IFachada fachada = Fachada.getInstancia();
 	private Endereco endereco = new Endereco();
 	private Usuario usuario = new Usuario();
+	private String perfil = "comum";
+	
+	public void novoUsuario(){
+		this.usuario = new Usuario();
+		this.endereco = new Endereco();
+		this.perfil = "comum";
+	}
 
 	public String inserirUsuario() {
 		try {
@@ -33,7 +40,21 @@ public class UsuarioBean {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao cadastrar Usuário!"));
 		}
-		return "usuarioCAD.xthml";
+		return "usuarioCIndex.xhtml";
+	}
+	
+	public String logarUsuario() {
+		String pagina = "login.xhtml";
+		try {
+			fachada.logarUsuario(usuario);
+			pagina = "usuarioCIndex.xhtml";
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Usuário Logado!"));
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Erro ao logar Usuário!"));
+		}
+		return pagina;
 	}
 
 	public String alterarUsuario() {
@@ -45,23 +66,21 @@ public class UsuarioBean {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao alterar usuario!"));
 		}
-		return "usuarioLIST.xhtml";
+		return "usuarioCIndex.xhtml";
 	}
 
 	public String removerUsuario(Usuario usuario) {
 		try {
-			fachada.removerUsuario(usuario);;
-			FacesContext.getCurrentInstance().getExternalContext()
-					.redirect("usuarioLIST.xhtml");
+			fachada.removerUsuario(usuario);
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					"Excluir", "Usuário excluído com Sucesso!.");
-
+					"Excluir", "Usuário excluído com Sucesso!");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("usuarioCIndex.xhtml");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (Exception ex) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao excluir Usuário!"));
 		}
-		return "";
+		return "usuarioCIndex.xhtml";
 	}
 
 	public List<Usuario> getConsultarTodosUsuarios() {
@@ -82,6 +101,20 @@ public class UsuarioBean {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+
+	public void alterarTipoPerfil(String perfil){
+		if(perfil!=""){
+			this.perfil = perfil;
+		}
 	}
 
 	// ------------------------------------------------------------

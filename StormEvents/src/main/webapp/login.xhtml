@@ -1,31 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-<body bgcolor="#000000" style="padding:0px 0px 0px 0px; margin:0px 0px 0px 0px ">
-<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td style="background-image: url(imagens/background.jpg); background-repeat: repeat-x; background-position: left;" width="50%">
-			</td>
-			<td>							
-				<input type="image" src="imagens/logotipo.png">
-				<table>
-					<tr>								
-						<td colspan="2"> &nbsp; </td>
-					</tr>	   						
-					<tr>								
-						<td colspan="2" > Login do Sistema </td>
-					</tr>	   
-					<tr>
-						<td>Login:</td> 
-						<td><input type="text" name="login" id="login" size="10"></td>
-					</tr>
-					<tr>
-						<td >Senha:</td> <td><input type="password" size="10" id="senha" name="senha"></td>
-					</tr>						
-			</td>			
-            <td style="background-image: url(imagens/background.jpg); background-repeat: repeat-x; background-position: right;" width="50%">
-			</td>			
-        </tr>
-    </table>     
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:formTemplate="http://java.sun.com/jsf/composite/formTemplate"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<ui:composition template="/template/templateUsuarioC.xhtml">
+	<ui:define name="content">
+
+		<p:messages />
+
+		<h:form styleClass="form-horizontal" id="form">
+
+			<p:panel header="Login">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Login</label>
+					<div class="col-sm-6">
+						<p:inputText id="login" value="#{usuarioBean.usuario.login}"
+							styleClass="form-control" pt:placeholder="Login" required="true"
+							requiredMessage="Preencha o Campo 'Login' para poder logar!" />
+					</div>
+					<div class="col-sm-4">
+						<p:message for="login"></p:message>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Senha</label>
+					<div class="col-sm-6">
+						<p:password id="senha" value="#{usuarioBean.usuario.senha}"
+							styleClass="form-control" pt:placeholder="Senha" required="true"
+							requiredMessage="Preencha o Campo 'Senha' para poder logar!" />
+					</div>
+					<div class="col-sm-4">
+						<p:message for="senha"></p:message>
+					</div>
+				</div>
+
+				<div class="form-group col-sm-offset-7 col-sm-5">
+					<div class="btn-toolbar">
+						<h:commandButton value="Logar"
+							action="#{usuarioBean.logarUsuario}" style="width:200px;"
+							class="btn btn-success" />
+						<h:button value="Voltar" class="btn btn-warning"
+							outcome="index" />
+					</div>
+				</div>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>

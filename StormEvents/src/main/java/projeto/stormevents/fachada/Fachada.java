@@ -4,6 +4,7 @@ import java.util.List;
 
 import projeto.stormevents.basicas.Usuario;
 import projeto.stormevents.controlador.UsuarioControlador;
+import projeto.stormevents.seguranca.LoginInvalidoException;
 
 public class Fachada implements IFachada {
 
@@ -39,6 +40,11 @@ public class Fachada implements IFachada {
 	@Override
 	public void alterarUsuario(Usuario usuario) {
 		usuarioControlador.alterarUsuario(usuario);
+	}
+	
+	@Override
+	public void logarUsuario (Usuario usuario) throws LoginInvalidoException{
+		usuarioControlador.logarUsuario(usuario);
 	}
 
 	

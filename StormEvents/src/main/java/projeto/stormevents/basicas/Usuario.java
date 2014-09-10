@@ -5,10 +5,12 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="TAB_USU")
+@NamedQuery(name="efetuarLogin", query="Select u from Usuario u where u.login = :login and u.senha = :senha")
 public class Usuario {
 	
 	@Id

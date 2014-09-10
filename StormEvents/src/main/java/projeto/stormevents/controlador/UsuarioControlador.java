@@ -5,6 +5,7 @@ import java.util.List;
 import projeto.stormevents.basicas.Usuario;
 import projeto.stormevents.dados.UsuarioDAO;
 import projeto.stormevents.dados.UsuarioIDAO;
+import projeto.stormevents.seguranca.LoginInvalidoException;
 
 public class UsuarioControlador {
 
@@ -25,5 +26,8 @@ public class UsuarioControlador {
 	}
 	public void removerUsuario (Usuario usuario){
 		usuarioDAO.remover(usuario);
+	}
+	public void logarUsuario (Usuario usuario) throws LoginInvalidoException{
+		usuarioDAO.efetuarLogin(usuario.getLogin(), usuario.getSenha());
 	}
 }

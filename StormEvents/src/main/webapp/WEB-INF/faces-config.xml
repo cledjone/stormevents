@@ -25,8 +25,17 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>usuarioLIST</from-outcome>
+			<from-outcome>usuarioIndex</from-outcome>
 			<to-view-id>/usuario/usuarioCIndex.xhtml</to-view-id>
+			<!-- <redirect></redirect> -->
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
 			<!-- <redirect></redirect> -->
 		</navigation-case>
 	</navigation-rule>

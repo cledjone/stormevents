@@ -15,7 +15,7 @@ public class UsuarioControlador {
 		usuarioDAO = new UsuarioDAO();
 	}
 
-	public void inserirUsuario (Usuario usuario){
+	public void inserirUsuario (Usuario usuario) throws Exception{
 		usuarioDAO.inserir(usuario);	
 	}
 	public List<Usuario> consultarTodos(){

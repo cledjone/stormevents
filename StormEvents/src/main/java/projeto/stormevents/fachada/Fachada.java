@@ -23,7 +23,7 @@ public class Fachada implements IFachada {
 	}
 
 	@Override
-	public void inserirUsuario(Usuario usuario) {
+	public void inserirUsuario(Usuario usuario) throws Exception{
 		usuarioControlador.inserirUsuario(usuario);
 	}
 

@@ -9,7 +9,7 @@ public interface IFachada {
 	
 	//Usuário
 	
-	public void inserirUsuario(Usuario usuario);
+	public void inserirUsuario(Usuario usuario) throws Exception;
 
 	public List<Usuario> consultarTodosUsuarios();
 

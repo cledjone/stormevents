@@ -12,6 +12,7 @@ import org.primefaces.event.FlowEvent;
 
 import projeto.stormevents.basicas.Endereco;
 import projeto.stormevents.basicas.Usuario;
+import projeto.stormevents.dados.UsuarioIDAO;
 import projeto.stormevents.fachada.Fachada;
 import projeto.stormevents.fachada.IFachada;
 

@@ -73,7 +73,7 @@
 				header="Detalhe do Usuário" modal="true" resizable="false"
 				showEffect="explode" height="500px" width="70%">
 		
-				<h:form styleClass="form-horizontal">
+<!-- 				<h:form styleClass="form-horizontal"> -->
 					<p:fieldset legend="Dados Gerais do Usuário">
 						<div class="form-group">
 							<label class="col-sm-2 control-label">Nome</label>
@@ -201,11 +201,11 @@
 					</p:fieldset>
 					<br/>
 					<center>
-						<h:commandButton value="Salvar"
-										action="#{usuarioBean.alterarUsuario}" style="width:200px;"
-										class="btn btn-success" />
+						<p:commandButton value="Salvar"
+										action="#{usuarioBean.alterarUsuario()}" style="width:200px;"
+										styleClass="btn btn-success" ajax="false"/>
 					</center>
-				</h:form>
+<!-- 				</h:form> -->
 			</p:dialog>
 		</h:form>
 

@@ -2,14 +2,11 @@ package projeto.stormevents.managedBeans;
 
 import java.util.List;
 import java.util.logging.Logger;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import org.primefaces.event.FlowEvent;
-
 import projeto.stormevents.basicas.CategoriaDespesas;
 import projeto.stormevents.basicas.Usuario;
 import projeto.stormevents.fachada.Fachada;
@@ -21,6 +18,13 @@ public class CategoriaDespesasBeans {
 	private IFachada fachada = Fachada.getInstancia();
 	private CategoriaDespesas categoriadespesas = new CategoriaDespesas();
 	
+	
+	public void novaCategoria(){
+		this.categoriadespesas = new CategoriaDespesas();
+	}
+	
+	
+	
 	public String inserirCategoriaDespesas(){
 		try{
 			categoriadespesas.setId(null);
@@ -29,7 +33,7 @@ public class CategoriaDespesasBeans {
 		}catch (Exception e){
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro ao cadastrar Categoria de Despesas!"));
 		}
-		return "";
+		return "categoriadespesasCIndex.xhtml";
 	}
 	
 	public String alterarCategoriaDespesas() {
@@ -41,7 +45,7 @@ public class CategoriaDespesasBeans {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao alterar Categoria De Despesas!"));
 		}
-		return "";
+		return "categoriadespesasCIndex.xhtml";
 	}
 	
 	public String removerCategoriaDespesas(CategoriaDespesas categoriadespesas) {
@@ -49,16 +53,16 @@ public class CategoriaDespesasBeans {
 			fachada.removerCategoriaDespesas(categoriadespesas);
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
 					"Excluir", "Categoria excluída com Sucesso!");
-			FacesContext.getCurrentInstance().getExternalContext().redirect("usuarioCIndex.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("categoriadespesasCIndex.xhtml");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (Exception ex) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao excluir Categoria!"));
 		}
-		return "";
+		return "categoriadespesasCIndex.xhtml";
 	}
 	
-	public List<CategoriaDespesas> getConsultarTodosCategoriaDespesas() {
+	public List<CategoriaDespesas> getConsultarTodasCategoriaDespesas() {
 		return fachada.consultarTodasCategoriasDespesas();
 	}
 

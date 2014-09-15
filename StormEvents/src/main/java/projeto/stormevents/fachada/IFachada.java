@@ -15,7 +15,7 @@ public interface IFachada {
 
 	public void removerUsuario(Usuario usuario);
 
-	public void alterarUsuario(Usuario usuario);
+	public void alterarUsuario(Usuario usuario) throws Exception;
 
 	void logarUsuario(Usuario usuario) throws LoginInvalidoException;
 	

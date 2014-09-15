@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:formTemplate="http://java.sun.com/jsf/composite/formTemplate"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<ui:composition template="/template/templateUsuarioC.xhtml">
+	<ui:define name="content">
+
+		<h:form styleClass="form-horizontal" id="form">
+
+			<p:wizard flowListener="#{categoriaDespesasBeans.onFlowProcess}">
+
+				<p:tab id="dadosGerais" title="Dados Gerais">
+
+					<p:panel header="Dados Gerais - Categoria de Despesas">
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Nome</label>
+							<div class="col-sm-6">
+								<h:inputText  id="nome" value="#{categoriaDespesasBeans.categoriadespesas.nome}"
+									class="form-control" pt:placeholder="Nome" required="true"
+									requiredMessage="O Campo 'Nome' é obrigatório!"
+									onkeyup="this.value = this.value.toUpperCase();" />
+							</div>
+							<div class="col-sm-4">
+								<p:message for="nome"></p:message>
+							</div>
+						</div>			
+
+						
+
+					</p:panel>
+				</p:tab>
+				
+				
+				
+				<p:tab id="confirmar" title="Finalizar Cadastro">
+
+					<p:panel header="Finalizar Cadastro de Usuário">
+
+						<div class="form-group">
+							<div class="col-sm-offset-7 col-sm-5">
+								<div class="btn-toolbar">
+									<h:commandButton value="Cadastrar"
+										action="#{categoriaDespesasBeans.inserirCategoriaDespesas}" style="width:200px;"
+										class="btn btn-success" />
+									<h:button value="Voltar" class="btn btn-warning"
+										outcome="categoriadespesasCIndex" />
+								</div>
+							</div>
+						</div>
+					</p:panel>
+
+				</p:tab>
+			</p:wizard>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

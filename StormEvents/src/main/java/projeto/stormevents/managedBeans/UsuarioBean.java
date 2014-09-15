@@ -50,7 +50,7 @@ public class UsuarioBean {
 			fachada.logarUsuario(usuario);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Usuário Logado!"));			
-			FacesContext.getCurrentInstance().getExternalContext().redirect("usuarioCIndex.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("usuario/usuarioCIndex.xhtml");
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Usuario ou Senha Inválidos!"));

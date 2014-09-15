@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:formTemplate="http://java.sun.com/jsf/composite/formTemplate"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/templateUsuarioC.xhtml">
+	<ui:define name="content">
+
+		<h:form styleClass="form-horizontal" id="form">
+
+			<p:button value="Nova Categoria" outcome="categoriadespesasCAD"
+				onclick="#{categoriaDespesasBeans.novaCategoria()}" />
+
+			<br />
+			<br />
+
+			<p:panel header="Lista de Categorias">
+				<p:messages></p:messages>
+				<p:scrollPanel style="height:400px">
+					<p:dataTable var="categoriadespesas"
+						value="#{categoriaDespesasBeans.consultarTodasCategoriaDespesas}"
+						selectionMode="single" selection="#{categoriaDespesasBeans.categoriadespesas}"
+						rowKey="#{categoriadespesas.id}">
+
+						<p:column headerText="Nome">
+							<h:outputText value="#{categoriadespesas.nome}">
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Editar">
+							<center>
+								<p:commandLink oncomplete="PF('viewEdit').show()"
+									update=":viewEditId:viewEdit">
+									<p:graphicImage value="../resources/images/edit.png" />
+									<f:setPropertyActionListener target="#{categoriaDespesasBeans.categoriadespesas}"
+										value="#{categoriadespesas}" />
+								</p:commandLink>
+							</center>
+						</p:column>
+
+						<p:column headerText="Excluir">
+							<center>
+								<p:commandLink action="#{categoriaDespesasBeans.removerCategoriaDespesas(categoriadespesas)}">
+									<p:graphicImage value="../resources/images/delete.png" />
+									<p:confirm header="Excluir Categoria"
+										message="Deseja realmente excluir esta Categoria?"
+										icon="ui-icon-alert" />
+								</p:commandLink>
+							</center>
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="explode">
+								<p:commandButton value="Yes" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="No" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+									ajax="@me" />
+							</p:confirmDialog>
+						</p:column>
+					</p:dataTable>
+				</p:scrollPanel>
+			</p:panel>
+
+		</h:form>
+
+		<h:form id="viewEditId">
+			<p:dialog widgetVar="viewEdit" id="viewEdit"
+				header="Detalhe das Categorias" modal="true" resizable="false"
+				showEffect="explode" height="500px" width="70%">
+		
+					<p:fieldset legend="Dados Gerais da Categoria" styleClass="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Nome</label>
+							<div class="col-sm-10">
+								<p:inplace id="InplaceNome" editor="true">
+									<h:inputText value="#{categoriaDespesasBeans.categoriadespesas.nome}"
+										onkeyup="this.value = this.value.toUpperCase();"
+										required="true"
+										requiredMessage="O Campo 'Nome' é obrigatório!" />
+								</p:inplace>
+							</div>
+						</div>
+						<br/>
+
+					</p:fieldset>
+					<br/>
+					<center>
+						<h:commandButton value="Salvar"
+										action="#{categoriaDespesasBeans.alterarCategoriaDespesas}" style="width:200px;"
+										class="btn btn-success" />
+					</center>
+			</p:dialog>
+		</h:form>
+
+		<p:messages />
+	</ui:define>
+</ui:composition>
+</html>

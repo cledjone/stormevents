@@ -9,7 +9,7 @@ public class CategoriaDespesasControlador {
 
 	
 	
-	public void inserirUsuario(CategoriaDespesas cd) {
+	public void inserirCategoriaDespesas(CategoriaDespesas cd) {
 		categoriaDespesasDAO.inserir(cd);
 	}
 

@@ -13,29 +13,32 @@ public class CategoriaDespesas {
 	@Id
 	@GeneratedValue
 	@Column(name = "ID_CATEGORIA_DESPESAS")
-	private int id;
+	private Integer id;
 
 	@Column(name = "DESCRICAO_CATEGORIA_DESPESAS")
-	private String Descricao_Categoria;
-
+	private String nome;
 	
+
 	
 	
 	// get and setters
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getDescricao_Categoria() {
-		return Descricao_Categoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDescricao_Categoria(String descricao_Categoria) {
-		Descricao_Categoria = descricao_Categoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
+
+	
 
 }

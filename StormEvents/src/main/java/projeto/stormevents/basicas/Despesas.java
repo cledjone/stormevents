@@ -15,7 +15,7 @@ public class Despesas {
 	@Id
 	@GeneratedValue
 	@Column(name = "ID_DESPESAS")
-	private int id;
+	private Integer id;
 
 	@Column(name = "VALOR_DESPESAS")
 	private double valor;
@@ -30,11 +30,11 @@ public class Despesas {
 	
 	
 	// GET AND SETTERS
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

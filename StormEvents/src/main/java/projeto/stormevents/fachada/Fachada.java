@@ -38,7 +38,7 @@ public class Fachada implements IFachada {
 	}
 
 	@Override
-	public void alterarUsuario(Usuario usuario) {
+	public void alterarUsuario(Usuario usuario) throws Exception {
 		usuarioControlador.alterarUsuario(usuario);
 	}
 	

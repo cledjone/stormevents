@@ -21,8 +21,12 @@ public class UsuarioControlador {
 	public List<Usuario> consultarTodos(){
 		return usuarioDAO.consultarTodos();	
 	}
-	public void alterarUsuario (Usuario usuario){
-		usuarioDAO.alterar(usuario);	
+	public void alterarUsuario (Usuario usuario) throws Exception{
+		if(usuario.getId()>0){
+			usuarioDAO.alterar(usuario);
+		}else{
+			throw new Exception("Usuário Vázio");
+		}
 	}
 	public void removerUsuario (Usuario usuario){
 		usuarioDAO.remover(usuario);

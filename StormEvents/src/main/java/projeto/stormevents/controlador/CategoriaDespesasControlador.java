@@ -1,28 +1,32 @@
 package projeto.stormevents.controlador;
 
+
 import java.util.List;
 import projeto.stormevents.dados.CategoriaDespesasDAO;
+import projeto.stormevents.dados.CategoriaDespesasIDAO;
 import projeto.stormevents.basicas.CategoriaDespesas;
 
 public class CategoriaDespesasControlador {
-	private CategoriaDespesasDAO categoriaDespesasDAO;
-
+	private CategoriaDespesasIDAO categoriaDespesasDAO;
+		
+	public CategoriaDespesasControlador(){
+		categoriaDespesasDAO = new CategoriaDespesasDAO();
+	}
 	
-	
-	public void inserirCategoriaDespesas(CategoriaDespesas cd) {
-		categoriaDespesasDAO.inserir(cd);
+	public void inserirCategoriaDespesas(CategoriaDespesas categoriadespesas) {
+		categoriaDespesasDAO.inserir(categoriadespesas);
 	}
 
 	public List<CategoriaDespesas> consultarTodos() {
 		return categoriaDespesasDAO.consultarTodos();
 	}
 
-	public void alterarCategoriaDespesas(CategoriaDespesas cd) {
-		categoriaDespesasDAO.alterar(cd);
+	public void alterarCategoriaDespesas(CategoriaDespesas categoriadespesas) {
+		categoriaDespesasDAO.alterar(categoriadespesas);
 	}
 
-	public void removerCategoriaDespesas(CategoriaDespesas cd) {
-		categoriaDespesasDAO.remover(cd);
+	public void removerCategoriaDespesas(CategoriaDespesas categoriadespesas) {
+		categoriaDespesasDAO.remover(categoriadespesas);
 	}
 	
 	public CategoriaDespesas consultarporIdCategoriaDespesas(Integer id){

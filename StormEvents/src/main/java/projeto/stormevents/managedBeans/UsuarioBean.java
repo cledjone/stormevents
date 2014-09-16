@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -37,6 +38,7 @@ public class UsuarioBean {
 			fachada.inserirUsuario(usuario);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Usuário cadastrado com sucesso!"));
+			
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Erro ao cadastrar Usuário!"));
@@ -44,18 +46,16 @@ public class UsuarioBean {
 		return "usuarioCIndex.xhtml";
 	}
 	
-	public String logarUsuario() {
-		String pagina = "login.xhtml";
+	public void logarUsuario() {		
 		try {
 			fachada.logarUsuario(usuario);
-			pagina = "usuarioCIndex.xhtml";
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Usuário Logado!"));
+					new FacesMessage("Usuário Logado!"));			
+			FacesContext.getCurrentInstance().getExternalContext().redirect("usuario/usuarioCIndex.xhtml");
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Erro ao logar Usuário!"));
-		}
-		return pagina;
+					new FacesMessage("Usuario ou Senha Inválidos!"));
+		}		
 	}
 
 	public String alterarUsuario() {

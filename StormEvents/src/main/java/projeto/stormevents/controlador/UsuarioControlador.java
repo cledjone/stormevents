@@ -15,16 +15,12 @@ public class UsuarioControlador {
 		usuarioDAO = new UsuarioDAO();
 	}
 
-	public void inserirUsuario (Usuario usuario) throws Exception{
+	public void inserirUsuario (Usuario usuario){
 		usuarioDAO.inserir(usuario);	
 	}
 	public List<Usuario> consultarTodos(){
 		return usuarioDAO.consultarTodos();	
 	}
-	public List<Usuario> consultar(){
-		return usuarioDAO.consultaPorNome();	
-	}
-
 	public void alterarUsuario (Usuario usuario){
 		usuarioDAO.alterar(usuario);	
 	}

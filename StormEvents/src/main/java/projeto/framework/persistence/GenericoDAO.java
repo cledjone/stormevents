@@ -10,6 +10,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import projeto.stormevents.basicas.Usuario;
+
 public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 
 	protected EntityManager entityManager;

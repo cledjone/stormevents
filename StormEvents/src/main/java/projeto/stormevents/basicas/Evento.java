@@ -9,4 +9,7 @@ public class Evento {
 	@GeneratedValue
 	@Column(name = "ID_EVENTO")
 	private int id;
+	
+	@Column(name = "NOME_EVE")
+	private String nome;
 }

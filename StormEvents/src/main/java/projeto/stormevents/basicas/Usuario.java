@@ -10,7 +10,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TAB_USU")
-@NamedQuery(name="efetuarLogin", query="Select u from Usuario u where u.login = :login and u.senha = :senha")
+@javax.persistence.NamedQueries({
+@NamedQuery(name="efetuarLogin", query="Select u from Usuario u where u.login = :login and u.senha = :senha"),
+@NamedQuery(name="consultarpornome", query="Select u.nome from Usuario u where u.nome = :nome")
+})
 public class Usuario {
 	
 	@Id

@@ -13,5 +13,6 @@ public interface GenericoIDAO<Entidade> {
 	public Entidade consultarPorId(Integer id);
 	
 	public List<Entidade> consultarTodos();
-
+ 
+	public List<Entidade> consultaPorNome();
 }

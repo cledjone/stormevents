@@ -87,7 +87,11 @@ public class UsuarioBean {
 	public List<Usuario> getConsultarTodosUsuarios() {
 		return fachada.consultarTodosUsuarios();
 	}
-
+	
+	public List<Usuario> getConsultarporNome(String c){
+		return fachada.consultarPorNome(c);
+	}
+		
 	public Usuario getUsuario() {
 		return usuario;
 	}

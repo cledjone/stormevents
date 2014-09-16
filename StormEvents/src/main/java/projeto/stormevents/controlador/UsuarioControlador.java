@@ -21,6 +21,10 @@ public class UsuarioControlador {
 	public List<Usuario> consultarTodos(){
 		return usuarioDAO.consultarTodos();	
 	}
+	public List<Usuario> consultar(){
+		return usuarioDAO.consultaPorNome();	
+	}
+
 	public void alterarUsuario (Usuario usuario){
 		usuarioDAO.alterar(usuario);	
 	}

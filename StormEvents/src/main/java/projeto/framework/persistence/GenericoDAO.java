@@ -106,6 +106,17 @@ public abstract class GenericoDAO<Entidade> implements GenericoIDAO<Entidade>{
 		return instance;
 	}
 
+
+	public final Entidade consultarPorNome(String chave) {
+		Entidade instance = null;
+		try {
+			instance = (Entidade) getEntityManager().find(classePersistente, chave);
+		} catch (RuntimeException re) {
+			re.printStackTrace();
+		}
+		return instance;
+	}
+
 	public List<Entidade> consultarTodos() {
 		try {
 			String sql = "from " + classePersistente.getSimpleName();

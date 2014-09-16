@@ -1,5 +1,7 @@
 package projeto.stormevents.dados;
 
+import java.util.List;
+
 import javax.persistence.TypedQuery;
 
 import projeto.framework.persistence.GenericoDAO;
@@ -19,5 +21,11 @@ public class UsuarioDAO extends GenericoDAO<Usuario> implements UsuarioIDAO  {
 			e.printStackTrace();
 			throw new LoginInvalidoException();
 		}
+	}
+
+	@Override
+	public List<Usuario> consultaPorNome() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

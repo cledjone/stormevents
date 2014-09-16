@@ -33,6 +33,10 @@ public class Fachada implements IFachada {
 	}
 
 	@Override
+	public List<Usuario> consultarPorNome(String nome) {
+		return usuarioControlador.consultar();
+	}
+	@Override
 	public void removerUsuario(Usuario usuario) {
 		usuarioControlador.removerUsuario(usuario);
 	}
